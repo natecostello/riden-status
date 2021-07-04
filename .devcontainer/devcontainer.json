@@ -41,7 +41,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "python3 -m pip install git+https://github.com/Baldanos/rd6006.git",
+	"postCreateCommand": "python3 -m pip install -v -v -v git+https://github.com/Baldanos/rd6006.git",
 
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
