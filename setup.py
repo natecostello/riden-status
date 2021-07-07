@@ -22,7 +22,11 @@ setuptools.setup(
     ],
     py_modules=['riden'],
     python_requires=">=3.6",
-    install_requires=["pyserial>=3.0", "minimalmodbus", "rd6006 @ git+https://github.com/natecostello/rd6006.git"]
+    install_requires=[
+        "pyserial>=3.0", 
+        "minimalmodbus", 
+        "rd6006 @ git+https://github.com/natecostello/rd6006.git", 
+        "instrument_logger @ git+https://github.com/natecostello/instrument_logger.git"]
 )
 
 # For specifying the rd6006 libray,
