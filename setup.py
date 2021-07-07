@@ -28,6 +28,8 @@ setuptools.setup(
         "rd6006 @ git+https://github.com/natecostello/rd6006.git", 
         "instrument_logger-NSC @ git+https://github.com/natecostello/instrument_logger.git"]
 )
+# In the install_requires values, the name @ address, name must match the name listed in the dependancy module
+
 
 # For specifying the rd6006 libray,
 # Using this: https://stackoverflow.com/questions/32688688/how-to-write-setup-py-to-include-a-git-repository-as-a-dependency/54794506#54794506
