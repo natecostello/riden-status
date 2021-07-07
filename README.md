@@ -11,4 +11,4 @@ Note, this code requires a Riden RD60XX connected via usb serial to run.  It wil
 ```
 ```
 %python3
->>> import riden-status
+>>> import riden

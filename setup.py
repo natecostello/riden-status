@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    py_modules=['riden-status'],
+    py_modules=['riden'],
     python_requires=">=3.6",
     install_requires=["pyserial>=3.0", "minimalmodbus", "rd6006 @ git+https://github.com/natecostello/rd6006.git"]
 )
