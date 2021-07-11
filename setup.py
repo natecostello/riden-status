@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="riden-NSC",  # Replace with your own username
+    name="riden_n-NSC",  # Replace with your own username
     version="0.0.1",
     author="Nate Costello",
     author_email="natecostello@gmail.com",
@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    py_modules=['riden'],
+    py_modules=['riden_n'],
     python_requires=">=3.6",
     install_requires=[
         "pyserial>=3.0", 
