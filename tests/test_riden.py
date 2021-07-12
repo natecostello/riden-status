@@ -1,4 +1,3 @@
-from rd6006 import RD6006
 from riden import Riden
 from context import riden_n
 from threading import Thread

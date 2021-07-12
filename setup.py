@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="riden_n-NSC",  # Replace with your own username
+    name="riden_monitor-NSC",  # Replace with your own username
     version="0.0.1",
     author="Nate Costello",
     author_email="natecostello@gmail.com",
@@ -20,12 +20,13 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    py_modules=['riden_n'],
+    py_modules=['riden_monitor'],
     python_requires=">=3.6",
     install_requires=[
         "pyserial>=3.0", 
         "minimalmodbus", 
-        "rd6006 @ git+https://github.com/natecostello/rd6006.git", 
+        # "rd6006 @ git+https://github.com/natecostello/rd6006.git", 
+        "riden @ git+https://github.com/ShayBox/Riden.git",
         "instrument_logger-NSC @ git+https://github.com/natecostello/instrument_logger.git"]
 )
 # In the install_requires values, the name @ address, name must match the name listed in the dependancy module

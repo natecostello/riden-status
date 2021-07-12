@@ -1,6 +1,5 @@
 import time
 import instrument_logger
-from rd6006 import RD6006
 from threading import Thread
 from riden import Riden
 
@@ -78,7 +77,7 @@ class RidenMonitor(instrument_logger.Instrument):
             self._measpower = str(self._rd.power)
             self._meastemp_external = str(self._rd.ext_temp_c)
             self._isValid = True
-            time.sleep(0.1)
+            time.sleep(0.25)
             
     def start(self):
         self._started = True
