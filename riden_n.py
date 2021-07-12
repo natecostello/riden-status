@@ -2,15 +2,16 @@ import time
 import instrument_logger
 from rd6006 import RD6006
 from threading import Thread
+from riden import Riden
 
 
 class RidenMonitor(instrument_logger.Instrument):
 
-    def __init__(self, port: str = None, rd60xx: RD6006 = None) -> None:
+    def __init__(self, port: str = None, rd60xx: Riden = None) -> None:
         if (rd60xx is not None):
             self._rd = rd60xx
         elif (port is not None):
-            self._rd = RD6006(port)
+            self._rd = Riden(port)
         else:
             raise ValueError('Either a port or RD606 instance must be provided')
         
@@ -69,19 +70,15 @@ class RidenMonitor(instrument_logger.Instrument):
     
     def _riden_poller(self):
         while self._started:
-            self._voltage = str(self._rd.voltage)
-            time.sleep(0.5)
-            self._current = str(self._rd.current)
-            time.sleep(0.5)
-            self._measvoltage = str(self._rd.measvoltage)
-            time.sleep(0.5)
-            self._meascurrent = str(self._rd.meascurrent)
-            time.sleep(0.5)
-            self._measpower = str(self._rd.measpower)
-            time.sleep(0.5)
-            self._meastemp_external = str(self._rd.meastemp_external)
+            self._rd.update()
+            self._voltage = str(self._rd.voltage_set)
+            self._current = str(self._rd.current_set)
+            self._measvoltage = str(self._rd.voltage)
+            self._meascurrent = str(self._rd.current)
+            self._measpower = str(self._rd.power)
+            self._meastemp_external = str(self._rd.ext_temp_c)
             self._isValid = True
-            time.sleep(0.5)
+            time.sleep(0.1)
             
     def start(self):
         self._started = True

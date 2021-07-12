@@ -1,35 +1,37 @@
 from rd6006 import RD6006
+from riden import Riden
 from context import riden_n
 from threading import Thread
 import timeit
 import time
 
 print('starting')
-ps = RD6006('/dev/ttyUSBrd6018')
+ps = Riden('/dev/ttyUSBrd6018')
 print('made power supply instance')
 
-ps.status()
+#ps.status()
 
 rd_inst1 = riden_n.RidenMonitor(rd60xx=ps)
 print('made the two instances')
-rd_inst1.start()
+# rd_inst1.start()
 
-while not rd_inst1.isValid:
-    print('waiting for inst to become valid')
-    time.sleep(4)
 
 print("valid")
 
-#print(timeit.timeit("rd_inst1.getmeasurement('rd6018.Voltage Setting.V')",globals=globals(), number=10))
+print(timeit.timeit("ps.update()",globals=globals(), number=100))
+
+rd_inst1.start()
+while not rd_inst1.isValid:
+    print('waiting for inst to become valid')
+    time.sleep(0.2)
 
 def read_inst():
     print("inst read voltage setting from main = " + rd_inst1.getmeasurement('rd6018.Voltage Setting.V'))
-    time.sleep(10)
 
 def read_inst_cont():
     while True:
         print("inst read voltage setting from thread = " + rd_inst1.getmeasurement('rd6018.Voltage Setting.V'))
-        time.sleep(10)
+        time.sleep(0.25)
 
 # def read_ps():
 #     print("ps read voltage setting from main = " + str(ps.voltage))
@@ -46,8 +48,16 @@ tr.daemon = True
 tr.start()
 
 # read from main thread
+count = True
 while True:
-    read_inst()
+    # read_inst()
+    if count:
+        count = not count
+        ps.set_voltage_set(26.1)
+    else:
+        count = not count
+        ps.set_voltage_set(26.0)
+    time.sleep(1)
     # ps.voltage = 26.1
     
 # while True:
